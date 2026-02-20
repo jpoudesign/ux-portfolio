@@ -387,9 +387,9 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
     max-width: none;
   }
 
-  /* Ensure body content section is 65% on mobile */
+  /* Ensure body content section is 80% on mobile */
   .homepage {
-    grid-template-rows: 65% 1fr;
+    grid-template-rows: 80% 1fr;
   }
 }
 
