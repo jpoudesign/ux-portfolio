@@ -71,11 +71,17 @@ html, body, #root {
   background: var(--surface-light);
 }
 
-/* Homepage: dark background extends below footer (safe area, overscroll, behind browser chrome) */
+/* Homepage: gradient so top is light, bottom is dark (extends below footer, behind browser chrome) */
 html:has(.layout--home),
 body:has(.layout--home),
 #root:has(.layout--home) {
-  background: var(--surface-dark);
+  background: linear-gradient(
+    to bottom,
+    var(--surface-light) 0%,
+    var(--surface-light) 50%,
+    var(--surface-dark) 50%,
+    var(--surface-dark) 100%
+  );
 }
 
 /* Reset heading margins */
