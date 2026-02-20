@@ -74,13 +74,14 @@ html, body, #root {
 /* Homepage: gradient so top is light blue, bottom is dark (extends below footer, behind browser chrome). Uses class on html/body for Safari/iOS compatibility. */
 html.layout-home,
 body.layout-home {
-  background-color: #120D40;
+  background-color: #D4E9FF;
+  /* 0deg = bottom-to-top; Safari iOS can treat gradient origin differently, so we use 0deg with light at top of stops */
   background-image: linear-gradient(
-    to bottom,
-    #D4E9FF 0%,
-    #D4E9FF 50%,
+    0deg,
+    #120D40 0%,
     #120D40 50%,
-    #120D40 100%
+    #D4E9FF 50%,
+    #D4E9FF 100%
   );
 }
 
