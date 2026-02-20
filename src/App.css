@@ -71,17 +71,24 @@ html, body, #root {
   background: var(--surface-light);
 }
 
-/* Homepage: gradient so top is light, bottom is dark (extends below footer, behind browser chrome) */
-html:has(.layout--home),
-body:has(.layout--home),
-#root:has(.layout--home) {
+/* Homepage: gradient so top is light blue, bottom is dark (extends below footer, behind browser chrome) */
+html:has(.layout--home) {
   background: linear-gradient(
     to bottom,
-    var(--surface-light) 0%,
-    var(--surface-light) 50%,
-    var(--surface-dark) 50%,
-    var(--surface-dark) 100%
+    #D4E9FF 0%,
+    #D4E9FF 50%,
+    #120D40 50%,
+    #120D40 100%
   );
+  background-attachment: fixed;
+}
+
+body:has(.layout--home) {
+  background: transparent;
+}
+
+#root:has(.layout--home) {
+  background: transparent;
 }
 
 /* Reset heading margins */
