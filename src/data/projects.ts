@@ -1,5 +1,39 @@
 import type { Project } from '../types/project';
 
+function makePassionProject(title: string, subtitle: string, tags: string[]): Project {
+  return {
+    title,
+    hook: {
+      lines: [
+        { text: 'Coming soon...', type: 'header' },
+        { text: 'Placeholder content for this passion project.', type: 'body' },
+        { text: 'Jared to the rescue!', type: 'jared-link' },
+      ],
+    },
+    info: {
+      caseStudy: title,
+      background: 'Placeholder background.',
+      objective: 'Placeholder objective.',
+      role: 'Design role',
+      team: 'Placeholder team.',
+      image: `https://placehold.co/800x500/1a2a3a/fff?text=${encodeURIComponent(title)}`,
+    },
+    chaos: {
+      subsections: [
+        { id: 'discovery', title: 'Discovery', question: 'What are we working with?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'research', title: 'Research', question: 'What do we need to learn?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    order: {
+      subsections: [
+        { id: 'design', title: 'Design', question: 'What solutions emerged?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'outcome', title: 'Outcome', question: 'What was delivered?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    list: { title, subtitle, tags },
+  };
+}
+
 export const projects: Record<string, Project> = {
   'enterprise-design-system': {
     title: 'Enterprise Design System: creating order out of chaos',
@@ -139,6 +173,111 @@ export const projects: Record<string, Project> = {
       ],
     },
   },
+  'eval': {
+    title: 'EVAL: Umpire Evaluator tool',
+    hook: {
+      lines: [
+        { text: 'A challenge emerged...', type: 'header' },
+        { text: 'Placeholder content for the EVAL project hook section.', type: 'body' },
+        { text: 'Identifying the problem', type: 'header' },
+        { text: 'Placeholder text describing the context and challenges.', type: 'body' },
+        { text: 'Jared to the rescue!', type: 'jared-link' },
+      ],
+    },
+    info: {
+      caseStudy: 'EVAL - Umpire Evaluator tool',
+      background: 'Placeholder background.',
+      objective: 'Placeholder objective.',
+      role: 'Design role',
+      team: 'Placeholder team.',
+      image: 'https://placehold.co/800x500/1a2a3a/fff?text=EVAL',
+    },
+    chaos: {
+      subsections: [
+        { id: 'discovery', title: 'Discovery', question: 'What are we working with?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'research', title: 'Research', question: 'What do we need to learn?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    order: {
+      subsections: [
+        { id: 'design', title: 'Design', question: 'What solutions emerged?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'outcome', title: 'Outcome', question: 'What was delivered?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    list: { title: 'EVAL', subtitle: 'Umpire Evaluator tool', tags: ['MLB', 'Tools'] },
+  },
+  'wealth-management-portal': {
+    title: 'Wealth Management Portal',
+    hook: {
+      lines: [
+        { text: 'A challenge emerged...', type: 'header' },
+        { text: 'Placeholder content for the Wealth Management Portal hook section.', type: 'body' },
+        { text: 'Identifying the problem', type: 'header' },
+        { text: 'Placeholder text describing the context and challenges.', type: 'body' },
+        { text: 'Jared to the rescue!', type: 'jared-link' },
+      ],
+    },
+    info: {
+      caseStudy: 'Wealth Management Portal',
+      background: 'Placeholder background.',
+      objective: 'Placeholder objective.',
+      role: 'Design role',
+      team: 'Placeholder team.',
+      image: 'https://placehold.co/800x500/1a2a3a/fff?text=Wealth+Management',
+    },
+    chaos: {
+      subsections: [
+        { id: 'discovery', title: 'Discovery', question: 'What are we working with?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'research', title: 'Research', question: 'What do we need to learn?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    order: {
+      subsections: [
+        { id: 'design', title: 'Design', question: 'What solutions emerged?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'outcome', title: 'Outcome', question: 'What was delivered?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    list: { title: 'Wealth Management Portal', subtitle: 'KeyBank', tags: ['KeyBank', 'Fintech'] },
+  },
+  'lincus': {
+    title: 'Lincus: Academic Search Engine',
+    hook: {
+      lines: [
+        { text: 'A challenge emerged...', type: 'header' },
+        { text: 'Placeholder content for the Lincus project hook section.', type: 'body' },
+        { text: 'Identifying the problem', type: 'header' },
+        { text: 'Placeholder text describing the context and challenges.', type: 'body' },
+        { text: 'Jared to the rescue!', type: 'jared-link' },
+      ],
+    },
+    info: {
+      caseStudy: 'Lincus - Academic Search Engine',
+      background: 'Placeholder background.',
+      objective: 'Placeholder objective.',
+      role: 'Design role',
+      team: 'Placeholder team.',
+      image: 'https://placehold.co/800x500/1a2a3a/fff?text=Lincus',
+    },
+    chaos: {
+      subsections: [
+        { id: 'discovery', title: 'Discovery', question: 'What are we working with?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'research', title: 'Research', question: 'What do we need to learn?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    order: {
+      subsections: [
+        { id: 'design', title: 'Design', question: 'What solutions emerged?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+        { id: 'outcome', title: 'Outcome', question: 'What was delivered?', cards: [{ header: 'Placeholder', text: 'Placeholder content.' }] },
+      ],
+    },
+    list: { title: 'Lincus', subtitle: 'Academic Search Engine', tags: ['Squared Labs', 'Search'] },
+  },
+  'branding-commissions': makePassionProject('Branding Commissions', 'Logos, identity, and brand systems', ['Branding']),
+  'ode-to-the-hobby': makePassionProject('Ode to the Hobby', 'Exploring personal interests through design', ['Hobby']),
+  'fine-art': makePassionProject('Fine Art', 'Artistic explorations and installations', ['Art']),
+  'photography': makePassionProject('Photography', 'Visual storytelling and moments', ['Photography']),
+  'video-art': makePassionProject('Video Art', 'Motion and moving image work', ['Video']),
+  'web-dev': makePassionProject('Web Dev', 'Code and interactive experiments', ['Web']),
 };
 
 export function getProject(slug: string): Project | null {
@@ -158,6 +297,21 @@ export function getProjectsForList(): Array<{ slug: string; title: string; subti
       slug,
       title: list?.title ?? titlePart ?? p.title,
       subtitle: list?.subtitle ?? subtitlePart ?? '',
+      tags: list?.tags ?? [],
+    };
+  });
+}
+
+const PASSION_PROJECT_SLUGS = ['branding-commissions', 'ode-to-the-hobby', 'fine-art', 'photography', 'video-art', 'web-dev'] as const;
+
+export function getPassionProjectsForList(): Array<{ slug: string; title: string; subtitle: string; tags: string[] }> {
+  return PASSION_PROJECT_SLUGS.map((slug) => {
+    const p = projects[slug];
+    const list = p!.list;
+    return {
+      slug,
+      title: list?.title ?? p!.title,
+      subtitle: list?.subtitle ?? '',
       tags: list?.tags ?? [],
     };
   });

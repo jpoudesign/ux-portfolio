@@ -19,12 +19,12 @@ export default function HomePage() {
             Major League Baseball:
           </p>
           <p className="project-group">
-            <Link to="/projects/enterprise-design-system" className="project-link">
+            <Link to="/projects/enterprise-design-system" className="project-link project-link--lava">
               Enterprise Design System
             </Link>
           </p>
           <p className="project-group">
-            <Link to="/projects" className="project-link">
+            <Link to="/projects/eval" className="project-link">
               EVAL - Umpire Evaluator tool
             </Link>
           </p>
@@ -32,7 +32,7 @@ export default function HomePage() {
             KeyBank:
           </p>
           <p className="project-group">
-            <Link to="/projects" className="project-link">
+            <Link to="/projects/wealth-management-portal" className="project-link">
               Wealth Management Portal
             </Link>
           </p>
@@ -40,7 +40,7 @@ export default function HomePage() {
             Squared Labs:
           </p>
           <p className="project-group">
-            <Link to="/projects" className="project-link">
+            <Link to="/projects/lincus" className="project-link">
               Lincus - Academic Search Engine
             </Link>
           </p>

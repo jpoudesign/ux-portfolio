@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { getProjectsForList } from '../data/projects';
+import { getPassionProjectsForList } from '../data/projects';
 
 export default function ProjectsPage() {
-  const projects = getProjectsForList();
+  const projects = getPassionProjectsForList();
   return (
     <div className="projects-page">
       <section className="page-header">

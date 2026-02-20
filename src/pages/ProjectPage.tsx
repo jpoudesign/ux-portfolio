@@ -17,6 +17,11 @@ export default function ProjectPage() {
   const orderSubsections = project?.order.subsections ?? [];
   const getSubsectionId = (s: { id?: string; title: string }) =>
     s.id ?? s.title.toLowerCase().replace(/\s+/g, '-');
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
   const subsectionIds = [
     ...chaosSubsections.map(getSubsectionId),
     ...orderSubsections.map(getSubsectionId),
@@ -93,7 +98,7 @@ export default function ProjectPage() {
             }
             if (line.type === 'jared-link') {
               return (
-                <a key={i} href="#project-info-section" className="hook-line hook-line--jared">
+                <a key={i} href="#project-info-section" className="hook-line hook-line--jared" onClick={(e) => scrollToSection(e, 'project-info-section')}>
                   {line.text}
                 </a>
               );
@@ -136,7 +141,7 @@ export default function ProjectPage() {
                 <p><strong>Team:</strong> {project.info.team}</p>
               </div>
             </div>
-            <a href="#order-intro" className="skip-btn">Skip to Solutions</a>
+            <a href="#order-intro" className="skip-btn" onClick={(e) => scrollToSection(e, 'order-intro')}>Skip to Solutions</a>
           </div>
         </div>
       </section>
@@ -144,12 +149,12 @@ export default function ProjectPage() {
       {/* Section Navigation - derived from project data */}
       <nav ref={navRef} className={`section-nav ${chaosInView && navStuck ? 'section-nav--dark' : ''}`}>
         <div className="section-nav-group">
-          <a href="#chaos" className="nav-label">CHAOS</a>
+          <a href="#chaos" className="nav-label" onClick={(e) => scrollToSection(e, 'chaos')}>CHAOS</a>
           <span className="nav-sep">//</span>
           {chaosSubsections.map((sub) => {
             const id = getSubsectionId(sub);
             return (
-              <a key={id} href={`#${id}`} className={activeSection === id ? 'active' : ''}>
+              <a key={id} href={`#${id}`} className={activeSection === id ? 'active' : ''} onClick={(e) => scrollToSection(e, id)}>
                 {sub.title}
               </a>
             );
@@ -162,7 +167,7 @@ export default function ProjectPage() {
           {orderSubsections.map((sub) => {
             const id = getSubsectionId(sub);
             return (
-              <a key={id} href={`#${id}`} className={activeSection === id ? 'active' : ''}>
+              <a key={id} href={`#${id}`} className={activeSection === id ? 'active' : ''} onClick={(e) => scrollToSection(e, id)}>
                 {sub.title}
               </a>
             );

@@ -71,27 +71,40 @@ html, body, #root {
   background: var(--surface-light);
 }
 
-/* Homepage: gradient so top is light blue, bottom is dark (extends below footer, behind browser chrome). Uses class on html/body for Safari/iOS compatibility. */
+/* Homepage: split background (light top, dark bottom) via fixed divs */
+#home-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body.layout-home #home-bg {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-bg-top {
+  flex: 1;
+  min-height: 50%;
+  background-color: #D4E9FF;
+}
+
+.home-bg-bottom {
+  flex: 1;
+  min-height: 50%;
+  background-color: #120D40;
+}
+
 html.layout-home,
 body.layout-home {
-  background-color: #120D40;
-  background-image: -webkit-linear-gradient(
-    top,
-    #D4E9FF 0%,
-    #D4E9FF 50%,
-    #120D40 50%,
-    #120D40 100%
-  );
-  background-image: linear-gradient(
-    to bottom,
-    #D4E9FF 0%,
-    #D4E9FF 50%,
-    #120D40 50%,
-    #120D40 100%
-  );
+  background-color: #D4E9FF;
 }
 
 body.layout-home #root {
+  position: relative;
+  z-index: 1;
   background: transparent;
 }
 
@@ -317,7 +330,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
     background: var(--surface-dark);
     color: var(--on-surface-dark);
     flex-direction: column;
-    padding: 5rem 2rem 2rem;
+    padding: var(--space-8) 2rem 2rem;
     gap: 1.5rem;
     border-left: 1px solid var(--border);
     transition: right 0.3s ease;
@@ -356,7 +369,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 }
 
 .layout--home {
-  background: var(--surface-dark);
+  background: transparent;
 }
 
 .layout--home .homepage {
@@ -377,12 +390,8 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   text-align: left;
   overflow: auto;
   min-height: 0;
-}
-
-@media (max-width: 1024px) {
-  .home-content {
-    padding-top: 0;
-  }
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .home-intro {
@@ -401,6 +410,33 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   }
 }
 
+/* Landscape / short viewport: single scrollable column so user can scroll to footer */
+@media (max-height: 500px) {
+  .layout--home main {
+    overflow: auto;
+  }
+
+  .layout--home .homepage {
+    flex: 0 0 auto;
+  }
+
+  .homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: min-content;
+    height: auto;
+  }
+
+  .home-content {
+    overflow: visible;
+    flex: 0 0 auto;
+  }
+
+  .home-footer {
+    flex: 0 0 auto;
+  }
+}
+
 .home-title-group {
   margin: 0;
   line-height: 1.4;
@@ -414,7 +450,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .home-emoji,
 .project-group {
   font-family: var(--font-body-alt);
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   font-weight: 400;
   margin: 0 0 var(--space-2) 0;
   line-height: 1.5;
@@ -430,7 +466,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 }
 
 .home-emoji {
-  font-size: var(--text-lead);
+  font-size: 24px;
   margin: var(--space-4) 0 0 0;
 }
 
@@ -449,7 +485,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 
 .project-link {
   font-family: var(--font-body-alt);
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   font-weight: 400;
   color: var(--accent);
   text-decoration: underline;
@@ -459,6 +495,38 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .project-link:hover {
   text-decoration-color: var(--accent);
   color: var(--accent);
+}
+
+.project-link--lava {
+  background: linear-gradient(
+    90deg,
+    #FF6B35,
+    #FF9500,
+    #FFD700,
+    #FF8C42,
+    #E63946,
+    #FF9500,
+    #FF6B35
+  );
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 85, 0, 0.5);
+  animation: lava-gradient 8s ease-in-out infinite;
+}
+
+.project-link--lava:hover {
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-decoration-color: var(--accent);
+}
+
+@keyframes lava-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .home-footer {
@@ -609,7 +677,6 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   height: auto;
   display: block;
   object-fit: contain;
-  vertical-align: bottom;
 }
 
 .about-photo-placeholder {
@@ -671,6 +738,26 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 @media (max-width: 1024px) {
   .about-notion {
     max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout--about main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .about-page {
+    padding-top: 0;
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+    padding-bottom: var(--space-16);
+  }
+
+  .about-hero {
+    gap: var(--space-4);
   }
 }
 
@@ -751,6 +838,13 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 
 .hook-line--jared:hover {
   text-decoration-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .hook-line--header,
+  .hook-line--jared {
+    font-size: 1.1rem;
+  }
 }
 
 /* Project Info Section */
@@ -1020,9 +1114,17 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 }
 
 @media (max-width: 720px) {
-  .section-nav .nav-sep-pipe {
-    display: none;
+.section-nav .nav-sep-pipe {
+  display: none;
   }
+}
+
+/* Scroll targets: offset for sticky section nav */
+.chaos-section,
+.order-section,
+.order-intro-section,
+.horizontal-scroll-section {
+  scroll-margin-top: 8rem;
 }
 
 /* Part 1 CHAOS intro section */
@@ -1445,6 +1547,16 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 @media (max-width: 1320px) {
   .lightbox-content {
     max-width: calc(100vw - 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox-overlay {
+    padding: var(--space-2);
+  }
+
+  .lightbox-content {
+    padding: var(--space-4);
   }
 }
 
