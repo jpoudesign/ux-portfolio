@@ -71,6 +71,13 @@ html, body, #root {
   background: var(--surface-light);
 }
 
+/* Homepage: dark background extends below footer (safe area, overscroll, behind browser chrome) */
+html:has(.layout--home),
+body:has(.layout--home),
+#root:has(.layout--home) {
+  background: var(--surface-dark);
+}
+
 /* Reset heading margins */
 h1, h2, h3, h4 {
   margin: 0;
