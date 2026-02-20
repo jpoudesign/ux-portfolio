@@ -74,17 +74,18 @@ html, body, #root {
 /* Homepage: gradient so top is light blue, bottom is dark (extends below footer, behind browser chrome). Uses class on html/body for Safari/iOS compatibility. */
 html.layout-home,
 body.layout-home {
-  background: linear-gradient(
+  background-color: #120D40;
+  background-image: linear-gradient(
     to bottom,
     #D4E9FF 0%,
     #D4E9FF 50%,
     #120D40 50%,
     #120D40 100%
-  ) !important;
+  );
 }
 
 body.layout-home #root {
-  background: transparent !important;
+  background: transparent;
 }
 
 /* Reset heading margins */
