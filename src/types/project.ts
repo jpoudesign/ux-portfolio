@@ -45,7 +45,6 @@ export interface ProjectListMeta {
   title?: string;
   subtitle?: string;
   tags?: string[];
-  hoverImage?: string;
 }
 
 export interface Project {

@@ -106,7 +106,6 @@ export const projects: Record<string, Project> = {
       title: 'Enterprise Design System',
       subtitle: 'Creating order out of chaos',
       tags: ['Design Systems', 'Figma', 'MLB'],
-      hoverImage: '/assets/project-details.png',
     },
     order: {
       subsections: [
@@ -150,7 +149,7 @@ export function getAllProjectSlugs(): string[] {
   return Object.keys(projects);
 }
 
-export function getProjectsForList(): Array<{ slug: string; title: string; subtitle: string; tags: string[]; hoverImage?: string }> {
+export function getProjectsForList(): Array<{ slug: string; title: string; subtitle: string; tags: string[] }> {
   return getAllProjectSlugs().map((slug) => {
     const p = projects[slug];
     const list = p.list;
@@ -160,7 +159,6 @@ export function getProjectsForList(): Array<{ slug: string; title: string; subti
       title: list?.title ?? titlePart ?? p.title,
       subtitle: list?.subtitle ?? subtitlePart ?? '',
       tags: list?.tags ?? [],
-      hoverImage: list?.hoverImage ?? p.info.image,
     };
   });
 }

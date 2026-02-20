@@ -137,7 +137,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .layout--home {
   display: flex;
   flex-direction: column;
-  background: var(--surface-light);
+  background: var(--surface-dark);
   color: var(--on-surface-light);
   padding-bottom: 0;
 }
@@ -145,10 +145,9 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .layout--home main {
   flex: 1;
   min-height: 0;
-}
-
-.layout--home .homepage {
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .layout--about {
@@ -178,7 +177,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .brand {
   font-family: var(--font-body-alt);
   font-weight: 400;
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   color: var(--on-surface-light);
   text-decoration: underline;
   text-decoration-color: var(--accent);
@@ -193,20 +192,24 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.25rem;
   z-index: 101;
+  line-height: 1;
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .hamburger span {
-  width: 25px;
-  height: 3px;
+  width: 18px;
+  height: 2px;
   background: var(--on-surface-light);
   transition: all 0.3s ease;
   transform-origin: center;
+  display: block;
 }
 
 .hamburger[aria-expanded="true"] {
@@ -219,7 +222,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(2) {
@@ -227,7 +230,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 .nav {
@@ -246,7 +249,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 
 .nav a {
   font-family: var(--font-body-alt);
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   font-weight: 400;
   color: var(--on-surface-light);
   text-decoration: underline;
@@ -313,7 +316,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   }
 
   .nav a {
-    font-size: var(--text-body);
+    font-size: 14px;
     padding: 0.5rem 0;
   }
 }
@@ -321,10 +324,24 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 /* ===== Homepage ===== */
 .homepage {
   display: grid;
-  grid-template-rows: 13fr 7fr;
-  min-height: calc(100vh - 80px);
+  grid-template-rows: 65% 1fr;
+  height: 100%;
+  min-height: 0;
   background: var(--surface-light);
   color: var(--on-surface-light);
+}
+
+.layout--home {
+  background: var(--surface-dark);
+}
+
+.layout--home .homepage {
+  background: var(--surface-light);
+  flex: 1;
+}
+
+.layout--home .home-footer {
+  background: var(--surface-dark);
 }
 
 .home-content {
@@ -334,7 +351,8 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   padding: 0 var(--space-8) var(--space-8);
   margin: 0;
   text-align: left;
-  position: relative;
+  overflow: auto;
+  min-height: 0;
 }
 
 @media (max-width: 1024px) {
@@ -414,25 +432,6 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   color: var(--accent);
 }
 
-.home-project-hover-image {
-  position: absolute;
-  bottom: var(--space-12);
-  right: var(--space-12);
-  max-width: min(720px, 65vw);
-  max-height: 85vh;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 10;
-}
-.home-project-hover-image img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 85vh;
-  object-fit: contain;
-  display: block;
-}
-
 .home-footer {
   background: var(--surface-dark);
   border-top: 1px solid var(--border);
@@ -447,7 +446,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 
 .footer-link {
   font-family: var(--font-body-alt);
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   font-weight: 400;
   color: var(--on-surface-dark);
   text-decoration: underline;
@@ -940,7 +939,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   font-family: var(--font-body-alt);
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   font-weight: 400;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
@@ -973,7 +972,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 .section-nav .nav-label,
 .section-nav .nav-sep {
   color: inherit;
-  font-size: var(--text-body-mobile);
+  font-size: 14px;
   font-weight: 400;
 }
 .section-nav a.nav-label:hover {
