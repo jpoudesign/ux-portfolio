@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import HorizontalScrollSection from '../components/HorizontalScrollSection';
 import { getProject } from '../data/projects';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function ProjectPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -83,7 +84,7 @@ export default function ProjectPage() {
       {/* Hook Section */}
       <section
         className="hook-section"
-        style={project.hook.backgroundImage ? { backgroundImage: `url(${project.hook.backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
+        style={project.hook.backgroundImage ? { backgroundImage: `url(${assetUrl(project.hook.backgroundImage)})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
       >
         <div className="hook-content">
           {project.hook.lines.map((line, i) => {
@@ -108,7 +109,7 @@ export default function ProjectPage() {
           <div className="project-info-visuals">
             {project.info.image ? (
               <div className="project-info-image-wrap">
-                <img src={project.info.image} alt="Project details" className="project-info-image" />
+                <img src={assetUrl(project.info.image)} alt="Project details" className="project-info-image" />
               </div>
             ) : (
               <div className="visual-placeholder">
@@ -177,7 +178,7 @@ export default function ProjectPage() {
             <h1 className="chaos-intro-word">CHAOS</h1>
           </div>
           <div className="chaos-intro-image-wrap">
-            <img src="/assets/chaos-board.png" alt="" className="chaos-intro-image" />
+            <img src={assetUrl('/assets/chaos-board.png')} alt="" className="chaos-intro-image" />
           </div>
         </div>
       </section>
@@ -202,7 +203,7 @@ export default function ProjectPage() {
             <h1 className="order-intro-word">ORDER</h1>
           </div>
           <div className="order-intro-image-wrap">
-            <img src="/assets/chaos-board.png" alt="" className="order-intro-image" />
+            <img src={assetUrl('/assets/chaos-board.png')} alt="" className="order-intro-image" />
           </div>
         </div>
       </section>

@@ -63,6 +63,14 @@
   }
 }
 
+/* Safe area support for iPhone notch/home indicator */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--surface-light);
+}
+
 /* Reset heading margins */
 h1, h2, h3, h4 {
   margin: 0;
@@ -118,6 +126,9 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 /* ===== Layout ===== */
 .layout {
   min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   background: var(--bg-dark);
   color: var(--text);
   overflow-x: visible;
@@ -152,6 +163,12 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   padding: var(--space-12) var(--space-12) var(--space-4);
 }
 
+@media (max-width: 768px) {
+  .layout--home .header {
+    padding: var(--space-6) var(--space-6) var(--space-4);
+  }
+}
+
 .brand {
   font-family: var(--font-body-alt);
   font-weight: 400;
@@ -184,6 +201,15 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   background: var(--on-surface-light);
   transition: all 0.3s ease;
   transform-origin: center;
+}
+
+.hamburger[aria-expanded="true"] {
+  background: var(--surface-dark);
+  border-radius: 4px;
+}
+
+.hamburger[aria-expanded="true"] span {
+  background: var(--on-surface-dark);
 }
 
 .hamburger[aria-expanded="true"] span:nth-child(1) {
@@ -313,7 +339,10 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 
 @media (max-width: 768px) {
   .home-content {
-    padding: 0 var(--space-12) var(--space-12);
+    padding: 0 var(--space-6) var(--space-6);
+  }
+  .home-footer {
+    padding: var(--space-6);
   }
 }
 
@@ -635,6 +664,12 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .hook-section {
+    padding: 2rem var(--space-6);
+  }
+}
+
 .hook-content {
   position: relative;
   z-index: 1;
@@ -648,6 +683,7 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 @media (max-width: 768px) {
   .hook-content {
     max-width: none;
+    padding: 0 var(--space-4);
   }
 }
 

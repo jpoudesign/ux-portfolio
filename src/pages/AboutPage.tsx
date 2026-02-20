@@ -1,3 +1,5 @@
+import { assetUrl } from '../utils/assetUrl';
+
 export default function AboutPage() {
   return (
     <>
@@ -5,7 +7,7 @@ export default function AboutPage() {
         <section className="about-hero">
           <div className="about-photo-wrap">
           <img
-            src="/assets/jared.jpg"
+            src={assetUrl('/assets/jared.jpg')}
             alt="Jared Poulsen"
             className="about-photo"
             onError={(e) => {

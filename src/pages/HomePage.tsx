@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { getProject } from '../data/projects';
+import { assetUrl } from '../utils/assetUrl';
 
 export default function HomePage() {
   const [hoverImage, setHoverImage] = useState<string | null>(null);
@@ -73,7 +74,7 @@ export default function HomePage() {
         </div>
         {hoverImage && (
           <div className="home-project-hover-image">
-            <img src={hoverImage} alt="" />
+            <img src={assetUrl(hoverImage!)} alt="" />
           </div>
         )}
       </section>

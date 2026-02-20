@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Lightbox from './Lightbox';
+import { assetUrl } from '../utils/assetUrl';
 
 export interface ProcessCardData {
   header: string;
@@ -24,14 +25,14 @@ export default function ProcessCard({ data }: ProcessCardProps) {
           <h3 className="process-card-header">
             {data.header}
             {data.headerImage && (
-              <img src={data.headerImage} alt="" className="process-card-header-img" />
+              <img src={assetUrl(data.headerImage)} alt="" className="process-card-header-img" />
             )}
           </h3>
         )}
         <p className="process-card-text">{data.text}</p>
         {data.image && (
           <div className="process-card-image">
-            <img src={data.image} alt={data.header} />
+            <img src={assetUrl(data.image)} alt={data.header} />
           </div>
         )}
         <button
@@ -49,7 +50,7 @@ export default function ProcessCard({ data }: ProcessCardProps) {
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
         title={data.header}
-        image={data.lightboxImage ?? data.image}
+        image={(data.lightboxImage ?? data.image) ? assetUrl(data.lightboxImage ?? data.image!) : undefined}
       >
         {data.lightboxContent ?? <p>{data.text}</p>}
       </Lightbox>
