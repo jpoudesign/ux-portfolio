@@ -71,24 +71,20 @@ html, body, #root {
   background: var(--surface-light);
 }
 
-/* Homepage: gradient so top is light blue, bottom is dark (extends below footer, behind browser chrome) */
-html:has(.layout--home) {
+/* Homepage: gradient so top is light blue, bottom is dark (extends below footer, behind browser chrome). Uses class on html/body for Safari/iOS compatibility. */
+html.layout-home,
+body.layout-home {
   background: linear-gradient(
     to bottom,
     #D4E9FF 0%,
     #D4E9FF 50%,
     #120D40 50%,
     #120D40 100%
-  );
-  background-attachment: fixed;
+  ) !important;
 }
 
-body:has(.layout--home) {
-  background: transparent;
-}
-
-#root:has(.layout--home) {
-  background: transparent;
+body.layout-home #root {
+  background: transparent !important;
 }
 
 /* Reset heading margins */
@@ -389,6 +385,11 @@ body, p, .hero-desc, .project-info-text p, .about-bio p, .subsection-question {
 @media (max-width: 768px) {
   .home-intro {
     max-width: none;
+  }
+
+  /* Ensure body content section is 65% on mobile */
+  .homepage {
+    grid-template-rows: 65% 1fr;
   }
 }
 

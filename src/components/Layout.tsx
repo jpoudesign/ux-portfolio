@@ -1,11 +1,20 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Layout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
   const isAbout = pathname === '/about';
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('layout-home', isHome);
+    document.body.classList.toggle('layout-home', isHome);
+    return () => {
+      document.documentElement.classList.remove('layout-home');
+      document.body.classList.remove('layout-home');
+    };
+  }, [isHome]);
 
   return (
     <div className={`layout ${isHome ? 'layout--home' : ''} ${isAbout ? 'layout--about' : ''}`}>
